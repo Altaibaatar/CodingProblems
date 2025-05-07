@@ -1,0 +1,72 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.lib
+*.pdb
+*.ipch
+*.iobj
+*.idb
+
+# Visual Studio folders
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code workspace
+*.code-workspace
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+build/
+out/
+
+# NuGet packages
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.sdf
+*.cache
+*.db
+
+# Precompiled Headers
+*.pch
+*.gch
+
+# Compiled source
+*.obj
+*.o
+
+# IDE specific
+*.VC.db
+*.VC.opendb
+
+# Other
+*.tlog/
+*.lastbuildstate
+*.clang-format
+*.clang-tidy
+*.DS_Store
