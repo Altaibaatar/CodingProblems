@@ -1,20 +1,20 @@
 // ConsoleApplication1.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "left_rotation.hpp"
+#include "solve_arrays.hpp"
 
 
 int main()
 {
-    vector<int> arr_input = {1, 2, 3, 4, 5};
+    vector<string> stringList = { "abcde", "sdaklfj", "asdjf", "na", "basdn", "sdaklfj", "asdjf", "na", "asdjf", "na", "basdn", "sdaklfj", "asdjf" };
+    vector<string> queries = { "abcde", "sdaklfj", "asdjf", "na", "basdn" };
 
-    vector<int> result = rotateLeft(2, arr_input);
-    int size = result.size();
-    printf("Size: %d\r\n", size);
-    for (int i = 0; i < size; ++i) {
-        printf("%d ", result[i]);
+    vector<int> result = ArrayMatchingStrings(stringList, queries);
+
+    for (int i = 0; i < queries.size(); ++i) {
+        printf("%s: %d\r\n", queries[i].c_str(), result[i]);
     }
-    std::cout << "\r\n";
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
