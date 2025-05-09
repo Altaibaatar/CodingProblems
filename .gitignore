@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Except these extensions
+!*.cpp
+!*.hpp
+!.gitignore
+
+# Also, keep directories so Git can find the files inside them
+!*/
