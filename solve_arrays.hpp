@@ -77,4 +77,68 @@ vector<int> ArrayMatchingStrings(vector<string> stringList, vector<string> queri
     }
 
     return arr_ret;
+    
+    /// Usage
+//    vector<string> stringList = { "abcde", "sdaklfj", "asdjf", "na", "basdn", "sdaklfj", "asdjf", "na", "asdjf", "na", "basdn", "sdaklfj", "asdjf" };
+//    vector<string> queries = { "abcde", "sdaklfj", "asdjf", "na", "basdn" };
+//
+//    vector<int> result = ArrayMatchingStrings(stringList, queries);
+//
+//    for (int i = 0; i < queries.size(); ++i) {
+//        printf("%s: %d\r\n", queries[i].c_str(), result[i]);
+//    }
+}
+
+/// <summary>
+/// HackerRank
+/// Array Manipulation
+/// </summary>
+/// <param name="n">Integer</param>
+/// <param name="queries"></param>
+/// <returns></returns>
+inline long ArrayManipulation(int n, vector<vector<int>> queries) {
+    vector<long> arr(n + 2, 0);  // extra space to handle end+1 safely
+
+    for (const auto &q : queries) {
+        int a = q[0];
+        int b = q[1];
+        int k = q[2];
+        arr[a] += k;
+        arr[b + 1] -= k;
+    }
+
+    long maxVal = 0, current = 0;
+    for (int i = 1; i <= n; ++i) {
+        current += arr[i];
+        if (current > maxVal)
+            maxVal = current;
+    }
+
+    return maxVal;
+    /// Usage
+    
+    ////    int size_n = 4000;
+    ////    vector<vector<int>> queries = {
+    ////        {2250, 2540, 180674}
+    ////      , {2459, 3892, 434122}
+    ////      , {2321, 3289, 363503}
+    ////      , {1975, 2754, 374161}
+    ////      , {3283, 3759, 45954}
+    ////    };
+    ////    int size_n = 5;
+    ////    vector<vector<int>> queries = {
+    ////          {1, 2, 100}
+    ////        , {2, 5, 100}
+    ////        , {3, 4, 100}
+    ////    };
+    //    int size_n = 10;
+    //    vector<vector<int>> queries = {
+    //          {2, 6, 8}
+    //        , {3, 5, 7}
+    //        , {1, 8, 1}
+    //        , {5, 9, 15}
+    //    };
+    //    long maxValue = ArrayManipulation(size_n, queries);
+    //
+    //    printf("The maxvalue is %ld\r\n", maxValue);
 }

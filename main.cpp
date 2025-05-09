@@ -6,14 +6,6 @@
 
 int main()
 {
-    vector<string> stringList = { "abcde", "sdaklfj", "asdjf", "na", "basdn", "sdaklfj", "asdjf", "na", "asdjf", "na", "basdn", "sdaklfj", "asdjf" };
-    vector<string> queries = { "abcde", "sdaklfj", "asdjf", "na", "basdn" };
-
-    vector<int> result = ArrayMatchingStrings(stringList, queries);
-
-    for (int i = 0; i < queries.size(); ++i) {
-        printf("%s: %d\r\n", queries[i].c_str(), result[i]);
-    }
     return 0;
 }
 
