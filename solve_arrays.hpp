@@ -10,9 +10,17 @@ using namespace std;
 /// Left Rotation
 /// Array element rotating function with d times to the left
 /// </summary>
-/// <param name="d">Rotate number</param>
-/// <param name="arr">Input array</param>
-/// <returns>Rotated array</returns>
+/// 
+/// Usage
+//vector<int> arr_input = { 1, 2, 3, 4, 5 };
+
+//vector<int> result = ArrayRotateLeft(2, arr_input);
+//int size = result.size();
+//printf("Size: %d\r\n", size);
+//for (int i = 0; i < size; ++i) {
+//    printf("%d ", result[i]);
+//}
+//std::cout << "\r\n";
 vector<int> ArrayRotateLeft(int d, vector<int> arr) {
     vector<int> arr_ret = { 0,0,0,0,0 };
     int size = arr.size();
@@ -28,26 +36,21 @@ vector<int> ArrayRotateLeft(int d, vector<int> arr) {
         }
     }
     return arr_ret;
-
-    /// Usage
-    //vector<int> arr_input = { 1, 2, 3, 4, 5 };
-
-    //vector<int> result = ArrayRotateLeft(2, arr_input);
-    //int size = result.size();
-    //printf("Size: %d\r\n", size);
-    //for (int i = 0; i < size; ++i) {
-    //    printf("%d ", result[i]);
-    //}
-    //std::cout << "\r\n";
 }
 
 /// <summary>
 /// HackerRank
 /// Sparse Arrays
 /// </summary>
-/// <param name="stringList"></param>
-/// <param name="queries"></param>
-/// <returns></returns>
+/// Usage
+//    vector<string> stringList = { "abcde", "sdaklfj", "asdjf", "na", "basdn", "sdaklfj", "asdjf", "na", "asdjf", "na", "basdn", "sdaklfj", "asdjf" };
+//    vector<string> queries = { "abcde", "sdaklfj", "asdjf", "na", "basdn" };
+//
+//    vector<int> result = ArrayMatchingStrings(stringList, queries);
+//
+//    for (int i = 0; i < queries.size(); ++i) {
+//        printf("%s: %d\r\n", queries[i].c_str(), result[i]);
+//    }
 vector<int> ArrayMatchingStrings(vector<string> stringList, vector<string> queries) {
     vector<int> arr_ret;
 
@@ -77,25 +80,38 @@ vector<int> ArrayMatchingStrings(vector<string> stringList, vector<string> queri
     }
 
     return arr_ret;
-    
-    /// Usage
-//    vector<string> stringList = { "abcde", "sdaklfj", "asdjf", "na", "basdn", "sdaklfj", "asdjf", "na", "asdjf", "na", "basdn", "sdaklfj", "asdjf" };
-//    vector<string> queries = { "abcde", "sdaklfj", "asdjf", "na", "basdn" };
-//
-//    vector<int> result = ArrayMatchingStrings(stringList, queries);
-//
-//    for (int i = 0; i < queries.size(); ++i) {
-//        printf("%s: %d\r\n", queries[i].c_str(), result[i]);
-//    }
 }
 
 /// <summary>
 /// HackerRank
 /// Array Manipulation
 /// </summary>
-/// <param name="n">Integer</param>
-/// <param name="queries"></param>
-/// <returns></returns>
+/// Usage
+    
+////    int size_n = 4000;
+////    vector<vector<int>> queries = {
+////        {2250, 2540, 180674}
+////      , {2459, 3892, 434122}
+////      , {2321, 3289, 363503}
+////      , {1975, 2754, 374161}
+////      , {3283, 3759, 45954}
+////    };
+////    int size_n = 5;
+////    vector<vector<int>> queries = {
+////          {1, 2, 100}
+////        , {2, 5, 100}
+////        , {3, 4, 100}
+////    };
+//    int size_n = 10;
+//    vector<vector<int>> queries = {
+//          {2, 6, 8}
+//        , {3, 5, 7}
+//        , {1, 8, 1}
+//        , {5, 9, 15}
+//    };
+//    long maxValue = ArrayManipulation(size_n, queries);
+//
+//    printf("The maxvalue is %ld\r\n", maxValue);
 inline long ArrayManipulation(int n, vector<vector<int>> queries) {
     vector<long> arr(n + 2, 0);  // extra space to handle end+1 safely
 
@@ -115,30 +131,29 @@ inline long ArrayManipulation(int n, vector<vector<int>> queries) {
     }
 
     return maxVal;
-    /// Usage
-    
-    ////    int size_n = 4000;
-    ////    vector<vector<int>> queries = {
-    ////        {2250, 2540, 180674}
-    ////      , {2459, 3892, 434122}
-    ////      , {2321, 3289, 363503}
-    ////      , {1975, 2754, 374161}
-    ////      , {3283, 3759, 45954}
-    ////    };
-    ////    int size_n = 5;
-    ////    vector<vector<int>> queries = {
-    ////          {1, 2, 100}
-    ////        , {2, 5, 100}
-    ////        , {3, 4, 100}
-    ////    };
-    //    int size_n = 10;
-    //    vector<vector<int>> queries = {
-    //          {2, 6, 8}
-    //        , {3, 5, 7}
-    //        , {1, 8, 1}
-    //        , {5, 9, 15}
-    //    };
-    //    long maxValue = ArrayManipulation(size_n, queries);
-    //
-    //    printf("The maxvalue is %ld\r\n", maxValue);
+}
+
+vector<int> DynamicArray(int n, vector<vector<int>> queries) {
+    vector<vector<int>> arr(n);      // 2D array of n empty arrays
+    vector<int> result;              // Stores answers to type 2 queries
+    int lastAnswer = 0;
+
+    for (auto& query : queries) {
+        int type = query[0];
+        int x = query[1];
+        int y = query[2];
+
+        int idx = (x ^ lastAnswer) % n;
+
+        if (type == 1) {
+            arr[idx].push_back(y);
+        }
+        else if (type == 2) {
+            int size = arr[idx].size();
+            lastAnswer = arr[idx][y % size];
+            result.push_back(lastAnswer);
+        }
+    }
+
+    return result;
 }
