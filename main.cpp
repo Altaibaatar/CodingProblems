@@ -2,6 +2,7 @@
 //
 
 #include "solve_arrays.hpp"
+#include "linked_list.hpp"
 
 
 int main()
